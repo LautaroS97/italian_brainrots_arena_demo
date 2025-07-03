@@ -41,7 +41,7 @@ class Skill:
         events.append(BattleEvent("skill", f"{attacker.name} usó {self.name}."))
 
         if not self.is_defense:
-            events.append(BattleEvent("cost", f"Consumió {cost} de energía.", COLOR_PP))
+            events.append(BattleEvent("cost", f"Consumió {cost} PP.", COLOR_PP))
 
         try:
             result: SkillResult = self.execute_fn(attacker, defender, cost)
@@ -65,7 +65,7 @@ class Skill:
                 events.append(BattleEvent("info", extra))
 
         if self.is_defense:
-            events.append(BattleEvent("cost", f"Consumió {cost} de energía.", COLOR_PP))
+            events.append(BattleEvent("cost", f"Consumió {cost} PP.", COLOR_PP))
 
         result.energy_cost = cost
         return result, events

@@ -68,7 +68,7 @@ def get_brainrot():
                     "movement": True,
                     "collision": True,
                     "hit_start": 8,
-                    "hit_end": 10,
+                    "hit_end": 9,
                 },
             ),
         ],
