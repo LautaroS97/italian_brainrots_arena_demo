@@ -16,6 +16,8 @@ MESSAGE_DELAY_MS = 2000
 _WIN_LOSE_CH = 3
 VICTORY_DONE_EVENT = pygame.USEREVENT + 1
 
+end_menu_ready = False
+
 player1 = player2 = battle = battle_ui = None
 background_img = platform_img = interface_img = None
 sound_manager = None
@@ -68,7 +70,7 @@ def _play_skill_animation(event: BattleEvent):
 def init_battle(selected_data, sm=None, opponent_name=None, scenario_data=None):
     global player1, player2, battle, battle_ui, background_img, platform_img, interface_img
     global sound_manager, events_queue, current_event, animator, pause_timer
-    global battle_has_ended, _intro_pending, _intro_counter
+    global battle_has_ended, _intro_pending, _intro_counter, end_menu_ready
     name = selected_data["name"] if isinstance(selected_data, dict) else selected_data
     player1 = _BRAINROT_FACTORIES[name]()
     if opponent_name and opponent_name in _BRAINROT_FACTORIES:
@@ -105,6 +107,7 @@ def init_battle(selected_data, sm=None, opponent_name=None, scenario_data=None):
     animator = None
     pause_timer = 0
     battle_has_ended = False
+    end_menu_ready = False
     _intro_pending = True
     _intro_counter = 0
     pygame.mixer.set_num_channels(max(_WIN_LOSE_CH + 1, pygame.mixer.get_num_channels()))

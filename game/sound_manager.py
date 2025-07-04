@@ -60,7 +60,7 @@ class SoundManager:
     def _get(self, key: str):
         return self.sounds.get(self._normalize(key))
 
-    def play(self, key: str, volume: float = 1.0, channel: str = "effects"):
+    def play(self, key: str, volume: float = 1.00, channel: str = "effects"):
         snd = self._get(key)
         if snd:
             ch = self.channels.get(channel)
@@ -73,7 +73,7 @@ class SoundManager:
         else:
             print(f"[SoundManager] Sound '{key}' not found.")
 
-    def play_loop(self, key: str, volume: float = 1.0):
+    def play_loop(self, key: str, volume: float = 1.00):
         snd = self._get(key)
         if snd:
             ch = self.channels["ambient"]
@@ -83,7 +83,7 @@ class SoundManager:
         else:
             print(f"[SoundManager] Sound '{key}' not found.")
 
-    def ensure_loop(self, key: str, volume: float = 1.0):
+    def ensure_loop(self, key: str, volume: float = 1.00):
         snd = self._get(key)
         ch = self.channels["ambient"]
         if snd and not ch.get_busy():
@@ -109,41 +109,41 @@ class SoundManager:
 
     # ---------- Secuencias prefabricadas ----------
     def play_intro_sequence(self, name1: str, name2: str):
-        self.play(f"fx_{name1}", volume=1.5, channel="voices")
+        self.play(f"fx_{name1}", volume=1.00, channel="voices")
         while self.channels["voices"].get_busy():
             pygame.time.wait(100)
-        self.play("fx_versus", volume=1.0, channel="voices")
+        self.play("fx_versus", volume=1.00, channel="voices")
         while self.channels["voices"].get_busy():
             pygame.time.wait(100)
-        self.play(f"fx_{name2}", volume=1.5, channel="voices")
+        self.play(f"fx_{name2}", volume=1.00, channel="voices")
         while self.channels["voices"].get_busy():
             pygame.time.wait(100)
-        self.play("fx_start_fight", volume=1.0, channel="voices")
+        self.play("fx_start_fight", volume=1.00, channel="voices")
 
     def play_victory_energy(self, loser: str, winner: str):
-        self.play(f"fx_{loser}", volume=1.5, channel="voices")
+        self.play(f"fx_{loser}", volume=1.00, channel="voices")
         while self.channels["voices"].get_busy():
             pygame.time.wait(100)
-        self.play("fx_end_energy", volume=1.0, channel="effects")
+        self.play("fx_end_energy", volume=1.00, channel="effects")
         while self.channels["effects"].get_busy():
             pygame.time.wait(100)
-        self.play(f"fx_{winner}", volume=1.5, channel="voices")
+        self.play(f"fx_{winner}", volume=1.00, channel="voices")
         while self.channels["voices"].get_busy():
             pygame.time.wait(100)
-        self.play("fx_winner_for_energy", volume=1.0, channel="effects")
+        self.play("fx_winner_for_energy", volume=1.00, channel="effects")
         while self.channels["effects"].get_busy():
             pygame.time.wait(100)
 
     def play_victory_health(self, loser: str, winner: str):
-        self.play(f"fx_{loser}", volume=1.5, channel="voices")
+        self.play(f"fx_{loser}", volume=1.00, channel="voices")
         while self.channels["voices"].get_busy():
             pygame.time.wait(100)
-        self.play("fx_end_health", volume=1.0, channel="effects")
+        self.play("fx_end_health", volume=1.00, channel="effects")
         while self.channels["effects"].get_busy():
             pygame.time.wait(100)
-        self.play(f"fx_{winner}", volume=1.5, channel="voices")
+        self.play(f"fx_{winner}", volume=1.00, channel="voices")
         while self.channels["voices"].get_busy():
             pygame.time.wait(100)
-        self.play("fx_winner_for_health", volume=1.0, channel="effects")
+        self.play("fx_winner_for_health", volume=1.00, channel="effects")
         while self.channels["effects"].get_busy():
             pygame.time.wait(100)

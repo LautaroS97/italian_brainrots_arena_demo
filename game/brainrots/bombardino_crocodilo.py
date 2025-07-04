@@ -27,7 +27,7 @@ def get_brainrot():
     base = "assets/animations/Bombardino_Crocodilo"
     return Brainrot(
         name="Bombardino Crocodilo",
-        max_hp=100,
+        max_hp=1,
         max_energy=100,
         lore_text="Bestia anfibia de explosivos acordes.",
         portrait_img=f"{base}/portrait.png",
